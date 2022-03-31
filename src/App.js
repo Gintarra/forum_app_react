@@ -7,6 +7,8 @@ import LoginPage from './pages/LoginPage';
 import Toolbar from './components/Toolbar';
 import ProfilePage from './pages/ProfilePage';
 import FavoritesPage from './pages/FavoritesPage';
+import ForumPage from './pages/ForumPage';
+import TopicPage from './pages/TopicPage';
 
 
 function App() {
@@ -21,7 +23,9 @@ function App() {
           <Route path='/registruotis' element={<RegisterPage />} />
           <Route path='/prisijungti' element={<LoginPage />} />
           <Route path='/profilis' element={<ProfilePage />} />
+          <Route path='/' element={<ForumPage />} />
           <Route path='/megstamiausi' element={<FavoritesPage />} />
+          <Route path='/tema/:id' element={<TopicPage />} />
           {/* <Route path='/create' element={<CreateAuctionPage />} />
           <Route path='/' element={<MainPage />} />
           <Route path='/auction/:id' element={<Auction />} />

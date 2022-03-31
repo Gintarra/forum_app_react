@@ -3,22 +3,20 @@ import { useState, useRef } from 'react';
 import { CloseButton } from "react-bootstrap";
 import http from '../plugins/http';
 
-const ModalChangeImage = ({ setModal, getUser, setUser}) => {
+const ModalTopic = ({ setModal, getUser}) => {
     const [getError, setError] = useState(null)
-    const newImage = useRef()
+    const newTopic = useRef()
     function closeModal() {
         document.body.style.overflow = 'visible'
         setModal(false)
     }
-    function changeImage(){
-        const updatedUser = {
-            newImage: newImage.current.value,
-            user: getUser.username
+    function createTopic() {
+        const topic = {
+            newTopic: newTopic.current.value
         }
-        http.post(updatedUser, 'changeImage').then(res => {
+        http.post(topic, 'createTopic').then(res => {
             if (res.success) {
-                newImage.current.value = ""
-                setUser(res.data)
+                newTopic.current.value = ""
                 setError(null)
                 closeModal()
             } else {
@@ -35,12 +33,12 @@ const ModalChangeImage = ({ setModal, getUser, setUser}) => {
                         className="close-button"
                     />
                     <div className="d-flex flex-column">
-                        <input ref={newImage}
-                            placeholder="Nukopijuokite nuotraukos url."
+                        <input ref={newTopic}
+                            placeholder="Įrašykite temos pavadinimą"
                         />
                         <div className="d-flex justify-content-center flex-column align-items-center">
-                              <div>{getError}</div>
-                            <button className="btn-modal" onClick={changeImage}>Pakeisti nuotrauką</button>
+                            <div>{getError}</div>
+                            <button className="btn-modal" onClick={createTopic}>Sukurti temą</button>
                         </div>
                     </div>
                 </div>
@@ -49,4 +47,4 @@ const ModalChangeImage = ({ setModal, getUser, setUser}) => {
     );
 };
 
-export default ModalChangeImage;
+export default ModalTopic;

@@ -24,7 +24,7 @@ const Login = () => {
                 inp.pass.current.value = ""
                 setError(null)
                 setUser(res.data)
-                nav('/profilis')
+                nav('/')
             } else {
                 setError(res.message)
             }

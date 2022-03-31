@@ -103,3 +103,16 @@
   font-weight: bold;
   background-color: rgb(16, 143, 44);
 }
+/* One topic element */
+.topic-card {
+    padding: 15px;
+}
+.flex1{
+    flex: 1;
+}
+.flex2{
+    flex: 2;
+}
+.flex4{
+    flex: 4;
+}
