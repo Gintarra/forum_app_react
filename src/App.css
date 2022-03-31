@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+.reg-log-container {
+  width: 280px;
+  padding: 25px 15px;
+  margin-top: 30px;
+}
+.btn {
+  margin: 10px;
+  padding: 6px;
+  width: 150px;
+  border: none;
+  font-weight: bold;
+  background-color: rgb(16, 143, 44);
+}
+.btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input {
+  width: 250px;
+  padding: 3px;
+  margin: 7px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.toolbar {
+  background-color: rgb(16, 143, 44);
+  padding: 15px;
+  width: 100%;
+}
+.link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: bold;
+}
+.link:hover {
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+}
+.user-container {
+  width: 100%;
+  background-color: rgb(197, 197, 197);
+  height: 250px;
+  padding: 25px;
+}
+.user-image {
+  height: 120px;
+  width: 140px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (max-width: 480px) {
+  .sm-column {
+    flex-direction: column;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.user-image:hover::after {
+  content: "Pakeisti nuotrauką";
+  width: 140px;
+  display: block;
+  position: absolute;
+  height: 30px;
+  background: #2aa10c;
+  font-weight: bold;
+}
+.user-image:hover {
+  cursor: pointer;
+}
+/* MODAL */
+.modal-window {
+  position: fixed;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(133, 133, 133, 0.46);
+  backdrop-filter: blur(6px);
+}
+.modal-main {
+  color: #575757;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px 60px 40px;
+  gap: 15px;
+  background-color: aliceblue;
+  width: 60%;
 }
-
-.App-link {
-  color: #61dafb;
+.close-button {
+  align-self: flex-end;
+  margin-right: -50px;
+  margin-top: -10px;
+  color: #575757;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-modal {
+  margin: 10px;
+  padding: 6px 12px;
+  border: none;
+  font-weight: bold;
+  background-color: rgb(16, 143, 44);
 }

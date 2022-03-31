@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import UserContext from './context/UserContext';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import Toolbar from './components/Toolbar';
+import ProfilePage from './pages/ProfilePage';
+import FavoritesPage from './pages/FavoritesPage';
+
 
 function App() {
+  const [getUser, setUser] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <BrowserRouter>
+      <UserContext.Provider value={{getUser, setUser}}>
+        <Toolbar />
+        <Routes>
+
+          <Route path='/registruotis' element={<RegisterPage />} />
+          <Route path='/prisijungti' element={<LoginPage />} />
+          <Route path='/profilis' element={<ProfilePage />} />
+          <Route path='/megstamiausi' element={<FavoritesPage />} />
+          {/* <Route path='/create' element={<CreateAuctionPage />} />
+          <Route path='/' element={<MainPage />} />
+          <Route path='/auction/:id' element={<Auction />} />
+          <Route path='/logout' element={<Logout />} /> */}
+
+        </Routes>
+        </UserContext.Provider>
+      </BrowserRouter>
     </div>
   );
 }
