@@ -71,7 +71,7 @@ const Topic = () => {
     }
 
     return (
-        <div>
+        <div className='p-3'>
             {getTopicComments.length > 0 && getTopicComments.map((x, i) => <div key={i}><OneComment x={x} /></div>)}
             {postsPerPage < getTotalCount &&
                 <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}

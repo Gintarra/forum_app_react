@@ -16,6 +16,7 @@ const Toolbar = () => {
             <Link className='link' to="/">Forumas</Link>
             <Link className='link' to="/megstamiausi">Mėgstamiausi</Link>
             {getUser && <Link className='link' to='/atsijungti' >Atsijungti</Link>}
+            {/* {getUser && <div>Notificationai: {getUser.notification}</div>} */}
         </div>
     );
 };

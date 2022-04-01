@@ -14,25 +14,28 @@ import Logout from './components/Logout';
 
 function App() {
   const [getUser, setUser] = useState(null)
+  if (!localStorage.getItem('favorites')) {
+    localStorage.setItem('favorites', JSON.stringify([]));
+  }
   return (
     <div >
       <BrowserRouter>
-      <UserContext.Provider value={{getUser, setUser}}>
-        <Toolbar />
-        <Routes>
+        <UserContext.Provider value={{ getUser, setUser }}>
+          <Toolbar />
+          <Routes>
 
-          <Route path='/registruotis' element={<RegisterPage />} />
-          <Route path='/prisijungti' element={<LoginPage />} />
-          <Route path='/profilis' element={<ProfilePage />} />
-          <Route path='/' element={<ForumPage />} />
-          <Route path='/megstamiausi' element={<FavoritesPage />} />
-          <Route path='/tema/:id' element={<TopicPage />} />
-          {/* <Route path='/create' element={<CreateAuctionPage />} />
+            <Route path='/registruotis' element={<RegisterPage />} />
+            <Route path='/prisijungti' element={<LoginPage />} />
+            <Route path='/profilis' element={<ProfilePage />} />
+            <Route path='/' element={<ForumPage />} />
+            <Route path='/megstamiausi' element={<FavoritesPage />} />
+            <Route path='/tema/:id' element={<TopicPage />} />
+            {/* <Route path='/create' element={<CreateAuctionPage />} />
           <Route path='/' element={<MainPage />} />
           <Route path='/auction/:id' element={<Auction />} /> */}
-          <Route path='/atsijungti' element={<Logout />} />
+            <Route path='/atsijungti' element={<Logout />} />
 
-        </Routes>
+          </Routes>
         </UserContext.Provider>
       </BrowserRouter>
     </div>

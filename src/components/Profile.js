@@ -21,6 +21,13 @@ const Profile = () => {
 
             }
         })
+        http.get("getUser").then(res => {
+            if (res.success) {
+                setUser(res.data)
+            } else {
+
+            }
+        })
     }, [])
     function displayDate(timestamp) {
         const date = new Date(timestamp);

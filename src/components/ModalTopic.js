@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import { CloseButton } from "react-bootstrap";
 import http from '../plugins/http';
 
-const ModalTopic = ({ setModal, getUser}) => {
+const ModalTopic = ({ setModal}) => {
     const [getError, setError] = useState(null)
     const newTopic = useRef()
     function closeModal() {

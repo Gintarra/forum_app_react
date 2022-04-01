@@ -32,8 +32,11 @@ const Register = () => {
 
     return (
         <div className='d-flex flex-column align-items-center reg-log-container'>
+            <div>Vartotojo vardas:</div>
             <input className='input' type="text" placeholder='Įveskite slapyvardį' ref={inp.username} />
+            <div>Slaptažodis:</div>
             <input className='input' type="password" placeholder='Įveskite slaptažodį' ref={inp.pass1} />
+            <div>Pakartokite slaptažodį:</div>
             <input className='input' type="password" placeholder='Pakartokite slaptažodį' ref={inp.pass2} />
             <button className='btn' onClick={registerUser}>Registruotis</button>
             {getError && <div className='d-flex justify-content-center'>{getError}</div>}

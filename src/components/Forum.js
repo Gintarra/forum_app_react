@@ -17,18 +17,20 @@ const Forum = () => {
 
             }
         })
-    }, [])
+    }, [getModal])
 
     return (
-        <div className='d-flex flex-column'>
-            {getModal && <ModalTopic setModal={setModal} getUser={getUser} />}
+        <div className='d-flex flex-column p-4 '>
+            {getModal && <ModalTopic setModal={setModal} />}
             {getUser && <button className='btn-modal align-self-end' onClick={() => setModal(true)}>Sukurti naują temą</button>}
-            <div className='d-flex text-center p-4'>
-                <div className='flex4'><b>Temos pavadinimas</b></div>
-                <div className='flex1'>Žinučių kiekis</div>
-                <div className='flex2'>Paskutinis postas</div>
+            <div className='d-flex align-items-center flex-column'>
+                <div className='d-flex text-center p-3 title sm-column'>
+                    <div className='flex4'><b>Temos pavadinimas</b></div>
+                    <div className='flex1'>Žinučių kiekis</div>
+                    <div className='flex2'>Paskutinis postas</div>
+                </div>
+                {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
             </div>
-            {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
         </div>
     );
 };
