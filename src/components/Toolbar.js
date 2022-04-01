@@ -7,6 +7,7 @@ import UserContext from '../context/UserContext';
 
 const Toolbar = () => {
     const { getUser } = useContext(UserContext)
+
     return (
         <div className='d-flex justify-content-evenly toolbar align-items-center'>
             {!getUser && <Link className='link' to="/registruotis">Registruotis</Link>}
@@ -14,7 +15,7 @@ const Toolbar = () => {
             {getUser && <Link className='link' to="/profilis">Profilis</Link>}
             <Link className='link' to="/">Forumas</Link>
             <Link className='link' to="/megstamiausi">Mėgstamiausi</Link>
-            {getUser && <Link className='link' to="/profilis">Atsijungti</Link>}
+            {getUser && <Link className='link' to='/atsijungti' >Atsijungti</Link>}
         </div>
     );
 };

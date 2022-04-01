@@ -9,6 +9,7 @@ import ProfilePage from './pages/ProfilePage';
 import FavoritesPage from './pages/FavoritesPage';
 import ForumPage from './pages/ForumPage';
 import TopicPage from './pages/TopicPage';
+import Logout from './components/Logout';
 
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
           <Route path='/tema/:id' element={<TopicPage />} />
           {/* <Route path='/create' element={<CreateAuctionPage />} />
           <Route path='/' element={<MainPage />} />
-          <Route path='/auction/:id' element={<Auction />} />
-          <Route path='/logout' element={<Logout />} /> */}
+          <Route path='/auction/:id' element={<Auction />} /> */}
+          <Route path='/atsijungti' element={<Logout />} />
 
         </Routes>
         </UserContext.Provider>

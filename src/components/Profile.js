@@ -4,16 +4,19 @@ import UserContext from '../context/UserContext';
 import ModalChangeImage from './ModalChangeImage';
 import http from '../plugins/http';
 import OneTopic from './OneTopic';
+import OneComment from './OneComment';
 
 const Profile = () => {
     const { getUser, setUser } = useContext(UserContext)
     const [getModal, setModal] = useState(false)
     const [getTopics, setTopics] = useState([])
+    const [getComments, setComments] = useState([])
 
     useEffect(() => {
         http.get("myTopics").then(res => {
             if (res.success) {
                 setTopics(res.data)
+                setComments(res.data2)
             } else {
 
             }
@@ -44,6 +47,8 @@ const Profile = () => {
          <div>Mano sukurtos temos:</div>
            {getTopics.length > 0 && getTopics.map((x,i) => <OneTopic key={i} topic={x}/>)}
            <div>Mano komentarai</div>
+           {/* tik komentaram gal reikia naujo componento, bet pradziai ok */}
+           {getComments.length > 0 && getComments.map((x,i) => <OneComment key={i} x={x}/>)}
             </div>}
         </>
     );
