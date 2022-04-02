@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState, useRef } from 'react';
 import { CloseButton } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import http from '../plugins/http';
 
-const ModalTopic = ({ setModal}) => {
+const ModalTopic = ({ setModal }) => {
     const [getError, setError] = useState(null)
     const newTopic = useRef()
+    const nav = useNavigate()
     function closeModal() {
         document.body.style.overflow = 'visible'
         setModal(false)
@@ -18,6 +20,7 @@ const ModalTopic = ({ setModal}) => {
             if (res.success) {
                 newTopic.current.value = ""
                 setError(null)
+                nav('/tema/' + res.data)
                 closeModal()
             } else {
                 setError(res.message)

@@ -7,7 +7,7 @@ import http from '../plugins/http';
 import OneComment from './OneComment';
 
 const Topic = () => {
-    const { getUser } = useContext(UserContext)
+    const { getUser, setUser } = useContext(UserContext)
     const { id } = useParams()
     const nav = useNavigate()
     const [getTopicComments, setTopicComments] = useState([])
@@ -29,6 +29,7 @@ const Topic = () => {
                 if (res.success) {
                     setTopicComments(res.data)
                     setTotalCount(res.data2)
+                    setUser(res.data3)
                 } else {
 
                 }
@@ -72,12 +73,16 @@ const Topic = () => {
 
     return (
         <div className='p-3'>
+             {postsPerPage < getTotalCount &&
+                <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}
+                />}
+            {getTopicComments.length === 0 && <div>Komentarų dar nėra</div>}
             {getTopicComments.length > 0 && getTopicComments.map((x, i) => <div key={i}><OneComment x={x} /></div>)}
             {postsPerPage < getTotalCount &&
                 <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}
                 />}
-            {getUser && <div className='d-flex flex-column'>
-                <textarea placeholder='Komentaro tekstas' ref={inputText} />
+            {getUser && <div className='d-flex flex-column align-items-center'>
+                <textarea  placeholder='Komentaro tekstas' ref={inputText} />
                 <div>{getError}</div>
                 <button className='btn' onClick={sendComment}>Komentuoti</button>
             </div>}

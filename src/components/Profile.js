@@ -4,12 +4,14 @@ import UserContext from '../context/UserContext';
 import ModalChangeImage from './ModalChangeImage';
 import http from '../plugins/http';
 import OneTopic from './OneTopic';
-import OneComment from './OneComment';
+import OneCommentUser from './OneCommentUser';
+import {FaCommentSlash, FaThList} from 'react-icons/fa'
 
 const Profile = () => {
     const { getUser, setUser } = useContext(UserContext)
     const [getModal, setModal] = useState(false)
     const [getTopics, setTopics] = useState([])
+    const [getAllTopics, setAllTopics] = useState([])
     const [getComments, setComments] = useState([])
 
     useEffect(() => {
@@ -17,6 +19,7 @@ const Profile = () => {
             if (res.success) {
                 setTopics(res.data)
                 setComments(res.data2)
+                setAllTopics(res.data3)
             } else {
 
             }
@@ -24,6 +27,7 @@ const Profile = () => {
         http.get("getUser").then(res => {
             if (res.success) {
                 setUser(res.data)
+                console.log(res.data, "user")
             } else {
 
             }
@@ -44,18 +48,25 @@ const Profile = () => {
                 <div className='user-container sm-column d-flex align-items-center justify-content-center'>
                     <div onClick={changeImage} className='user-image' style={{ backgroundImage: `url(${getUser.image})` }} >
                     </div>
-                    <div>
-                        <h4> {getUser.username}</h4>
-                        <h5>Registruotas nuo: {displayDate(getUser.registerTimestamp)}</h5>
-                        <h5>Parašytų komentarų kiekis: {getUser.commentsAmount} </h5>
+                    <div className='user-info'>
+                        <p className='my-1'> {getUser.username}</p>
+                        <p className='my-1'>Registruotas nuo: {displayDate(getUser.registerTimestamp)}</p>
+                        <p className='my-1'>Parašytų komentarų kiekis: {getUser.commentsAmount} </p>
                     </div>
                 </div>
-                {getModal && <ModalChangeImage setModal={setModal} getUser={getUser} setUser={setUser}/>}
-         <div>Mano sukurtos temos:</div>
-           {getTopics.length > 0 && getTopics.map((x,i) => <OneTopic key={i} topic={x}/>)}
-           <div>Mano komentarai</div>
-           {/* tik komentaram gal reikia naujo componento, bet pradziai ok */}
-           {getComments.length > 0 && getComments.map((x,i) => <OneComment key={i} x={x}/>)}
+                {getModal && <ModalChangeImage setModal={setModal} getUser={getUser} setUser={setUser} />}
+                <div className='p-3 d-flex flex-column align-items-center'>
+                    <h6>Mano sukurtos temos:</h6>
+                    {getTopics.length === 0 && <div className='d-flex flex-column align-items-center mt-2'><FaThList style={{fontSize: '60px'}}/>
+                    <div>Temų neturite</div></div>}
+                    {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
+                </div>
+                <div className='p-3 d-flex flex-column align-items-center'>
+                    <h6>Mano komentarai:</h6>
+                    {getComments.length === 0 && <div className='d-flex flex-column align-items-center mt-2'><FaCommentSlash style={{fontSize: '60px'}}/>
+                    <div>Komentarų neturite</div></div>}
+                    {getComments.length > 0 && getComments.map((x, i) => <OneCommentUser key={i} x={x} topics={getAllTopics} />)}
+                </div>
             </div>}
         </>
     );

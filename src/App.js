@@ -14,13 +14,14 @@ import Logout from './components/Logout';
 
 function App() {
   const [getUser, setUser] = useState(null)
+  const [allFavorites, setAllFavorites] = useState([])
   if (!localStorage.getItem('favorites')) {
     localStorage.setItem('favorites', JSON.stringify([]));
   }
   return (
     <div >
       <BrowserRouter>
-        <UserContext.Provider value={{ getUser, setUser }}>
+        <UserContext.Provider value={{ getUser, setUser, allFavorites, setAllFavorites }}>
           <Toolbar />
           <Routes>
 

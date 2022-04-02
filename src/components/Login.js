@@ -33,9 +33,10 @@ const Login = () => {
 
     return (
         <div className='d-flex flex-column align-items-center reg-log-container'>
-            <div>Vartotojo vardas:</div>
+            {/* <div>Vartotojo vardas:</div> */}
+            <div>Prisijunkite:</div>
             <input className='input' type="text" placeholder='Įveskite slapyvardį' ref={inp.username} />
-            <div>Slaptažodis:</div>
+            {/* <div>Slaptažodis:</div> */}
             <input className='input' type="password" placeholder='Įveskite slaptažodį' ref={inp.pass} />
             <button className='btn' onClick={login}>Prisijungti</button>
             {getError && <div className='d-flex justify-content-center '>{getError}</div>}

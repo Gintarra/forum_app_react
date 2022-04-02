@@ -29,6 +29,7 @@ const Forum = () => {
                     <div className='flex1'>Žinučių kiekis</div>
                     <div className='flex2'>Paskutinis postas</div>
                 </div>
+                {getTopics.length === 0 && <div>Temų dar nėra, sukurkite naują</div>}
                 {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
             </div>
         </div>
