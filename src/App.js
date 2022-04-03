@@ -15,13 +15,14 @@ import Logout from './components/Logout';
 function App() {
   const [getUser, setUser] = useState(null)
   const [allFavorites, setAllFavorites] = useState([])
+  const [favoritesAmount, setFavoritesAmount] = useState(localStorage.getItem('favorites') ? JSON.parse(localStorage.favorites).length : 0)
   if (!localStorage.getItem('favorites')) {
     localStorage.setItem('favorites', JSON.stringify([]));
   }
   return (
     <div >
       <BrowserRouter>
-        <UserContext.Provider value={{ getUser, setUser, allFavorites, setAllFavorites }}>
+        <UserContext.Provider value={{ getUser, setUser, allFavorites, setAllFavorites, favoritesAmount, setFavoritesAmount }}>
           <Toolbar />
           <Routes>
 
@@ -31,9 +32,6 @@ function App() {
             <Route path='/' element={<ForumPage />} />
             <Route path='/megstamiausi' element={<FavoritesPage />} />
             <Route path='/tema/:id' element={<TopicPage />} />
-            {/* <Route path='/create' element={<CreateAuctionPage />} />
-          <Route path='/' element={<MainPage />} />
-          <Route path='/auction/:id' element={<Auction />} /> */}
             <Route path='/atsijungti' element={<Logout />} />
 
           </Routes>

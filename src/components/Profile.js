@@ -50,7 +50,7 @@ const Profile = () => {
                     </div>
                     <div className='user-info'>
                         <p className='my-1'> {getUser.username}</p>
-                        <p className='my-1'>Registruotas nuo: {displayDate(getUser.registerTimestamp)}</p>
+                        <div className='my-1'>Registruotas nuo: {displayDate(getUser.registerTimestamp)}</div>
                         <p className='my-1'>Parašytų komentarų kiekis: {getUser.commentsAmount} </p>
                     </div>
                 </div>

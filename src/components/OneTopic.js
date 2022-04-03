@@ -7,7 +7,7 @@ import UserContext from '../context/UserContext';
 
 const OneTopic = ({ topic }) => {
   // console.log(topic)
-  const { getUser } = useContext(UserContext)
+  const { getUser, setFavoritesAmount } = useContext(UserContext)
   const [getNew, setNew] = useState(false)
   const [getFavouriteIndex, setFavouriteIndex] = useState([])
 
@@ -36,7 +36,7 @@ const OneTopic = ({ topic }) => {
     }
     localStorage.setItem("favorites", JSON.stringify(favorites));
     //  console.log(favorites)
-    // setFavoritesCounter(JSON.parse(localStorage.favorites).length);
+     setFavoritesAmount(JSON.parse(localStorage.favorites).length);
   }
   return (
     <div className='topic-card d-flex align-items-center sm-column'>
