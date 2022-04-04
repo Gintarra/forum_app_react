@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const OneCommentUser = ({ x, topics }) => {
@@ -10,21 +10,19 @@ const OneCommentUser = ({ x, topics }) => {
         )
     }
     function getTopic() {
-      let topInd =  topics.find(y => y._id === x.topicID)
+        let topInd = topics.find(y => y._id === x.topicID)
         return <p>{topInd.title}</p>
     }
-    function goToSinglePage(){
+    function goToSinglePage() {
         nav('/tema/' + x.topicID)
     }
     return (
         <div className='user-comment-container d-flex'>
             <div className='comment-box text-break'>
-               <div className='link-topic' onClick={goToSinglePage}><b>Tema:{getTopic()}</b> </div> 
+                <div className='link-topic' onClick={goToSinglePage}><b>Tema:{getTopic()}</b> </div>
                 {displayDate(x.createdTimestamp)}
                 {x.text}
             </div>
-
-            {/* <button onClick={validate}>Validate fdd</button> */}
         </div>
     );
 };

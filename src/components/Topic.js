@@ -5,6 +5,8 @@ import UsePagination from './Pagination';
 import UserContext from '../context/UserContext';
 import http from '../plugins/http';
 import OneComment from './OneComment';
+import {IoIosArrowForward} from 'react-icons/io'
+import Loader from './Loader';
 
 const Topic = () => {
     const { getUser, setUser } = useContext(UserContext)
@@ -12,30 +14,26 @@ const Topic = () => {
     const nav = useNavigate()
     const [getTopicComments, setTopicComments] = useState([])
     const [getState, setState] = useState(false)
+    const [getTitle, setTitle] = useState(false)
     const [getError, setError] = useState(null)
     const inputText = useRef()
     const location = useLocation()
-    //about pagination
     const [currentPage, setCurrentPage] = useState(null);
     const [postsPerPage] = useState(10);
     const [getTotalCount, setTotalCount] = useState(null)
-   
+    const [getLoader, setLoader] = useState(true)
 
-
-    //pagination ends
     useEffect(() => {
         if (currentPage !== null) {
-            http.get("topic/" + id + '/' +currentPage).then(res => {
+            http.get("topic/" + id + '/' + currentPage).then(res => {
                 if (res.success) {
                     setTopicComments(res.data)
                     setTotalCount(res.data2)
                     setUser(res.data3)
-                } else {
-
+                    setTitle(res.data4)
+                    setLoader(false)
                 }
             })
-        } else {
-        
         }
     }, [getState, currentPage])
 
@@ -47,13 +45,12 @@ const Topic = () => {
         } else {
             setCurrentPage(1);
         }
-      }, [location]);
+    }, [location]);
 
     const handlePageChange = (newActivePage) => {
         setCurrentPage(newActivePage);
         nav(`/tema/${id}?page=${newActivePage}`);
     };
-
 
     function sendComment() {
         const post = {
@@ -73,20 +70,24 @@ const Topic = () => {
 
     return (
         <div className='p-3'>
-             {postsPerPage < getTotalCount &&
+            <div className='d-flex my-2'>
+                <h5 onClick={() => nav('/')} className="link-topic d-flex align-items-end">Forumas <IoIosArrowForward/> </h5>
+                <h5>{getTitle}</h5>
+            </div>
+            {getLoader && <div className='d-flex justify-content-center'><Loader/></div>}
+            {postsPerPage < getTotalCount &&
                 <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}
                 />}
-            {getTopicComments.length === 0 && <div>Komentarų dar nėra</div>}
+            {getTopicComments.length === 0 && !getLoader && <div>Komentarų dar nėra</div>}
             {getTopicComments.length > 0 && getTopicComments.map((x, i) => <div key={i}><OneComment x={x} /></div>)}
             {postsPerPage < getTotalCount &&
                 <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}
                 />}
-            {getUser && <div className='d-flex flex-column align-items-center'>
-                <textarea  placeholder='Komentaro tekstas' ref={inputText} />
+            {getUser && !getLoader && <div className='d-flex flex-column align-items-center'>
+                <textarea placeholder='Komentaro tekstas' ref={inputText} />
                 <div>{getError}</div>
                 <button className='btn' onClick={sendComment}>Komentuoti</button>
             </div>}
-
         </div>
     );
 };

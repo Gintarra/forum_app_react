@@ -6,17 +6,11 @@ import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 
 const OneTopic = ({ topic }) => {
-  // console.log(topic)
   const { getUser, setFavoritesAmount } = useContext(UserContext)
   const [getNew, setNew] = useState(false)
-  const [getFavouriteIndex, setFavouriteIndex] = useState([])
-
   const [getState, setState] = useState(JSON.parse(localStorage.favorites).find((x) => x === topic._id))
   const nav = useNavigate()
 
-  function goToSinglePage(x) {
-    nav('/tema/' + x._id)
-  }
   useEffect(() => {
     setState(
       JSON.parse(localStorage.favorites).find((x) => x === topic._id)
@@ -24,10 +18,13 @@ const OneTopic = ({ topic }) => {
     if (getUser && getUser.notification) {
       getUser.notification.find(y => y === topic._id && setNew(true))
     }
-  }, [ topic, getState, getUser]);
+  }, [topic, getState, getUser]);
+
+  function goToSinglePage(x) {
+    nav('/tema/' + x._id)
+  }
   function changeFavorites() {
     let favorites = JSON.parse(localStorage.favorites);
-    // console.log(getState, "state")
     setState(!getState);
     if (!getState) {
       favorites.push(topic._id);
@@ -35,9 +32,9 @@ const OneTopic = ({ topic }) => {
       favorites = favorites.filter((x) => x !== topic._id);
     }
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    //  console.log(favorites)
-     setFavoritesAmount(JSON.parse(localStorage.favorites).length);
+    setFavoritesAmount(JSON.parse(localStorage.favorites).length);
   }
+
   return (
     <div className='topic-card d-flex align-items-center sm-column'>
       <div onClick={() => goToSinglePage(topic)} className='flex4 topic-onclick'><b>{topic.title}</b> by {topic.owner}</div>

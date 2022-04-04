@@ -3,14 +3,14 @@ import { useState, useRef } from 'react';
 import { CloseButton } from "react-bootstrap";
 import http from '../plugins/http';
 
-const ModalChangeImage = ({ setModal, getUser, setUser}) => {
+const ModalChangeImage = ({ setModal, getUser, setUser }) => {
     const [getError, setError] = useState(null)
     const newImage = useRef()
     function closeModal() {
         document.body.style.overflow = 'visible'
         setModal(false)
     }
-    function changeImage(){
+    function changeImage() {
         const updatedUser = {
             newImage: newImage.current.value,
             user: getUser.username
@@ -39,7 +39,7 @@ const ModalChangeImage = ({ setModal, getUser, setUser}) => {
                             placeholder="Nukopijuokite nuotraukos url."
                         />
                         <div className="d-flex justify-content-center flex-column align-items-center">
-                              <div>{getError}</div>
+                            <div>{getError}</div>
                             <button className="btn-modal" onClick={changeImage}>Pakeisti nuotrauką</button>
                         </div>
                     </div>

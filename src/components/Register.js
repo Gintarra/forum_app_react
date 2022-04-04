@@ -16,7 +16,6 @@ const Register = () => {
             pass1: inp.pass1.current.value,
             pass2: inp.pass2.current.value
         }
-
         http.post(user, "register").then(res => {
             if (res.success) {
                 setError(null)
@@ -34,9 +33,7 @@ const Register = () => {
         <div className='d-flex flex-column align-items-center reg-log-container'>
             <div>Registruokitės:</div>
             <input className='input' type="text" placeholder='Įveskite slapyvardį' ref={inp.username} />
-            {/* <div>Slaptažodis:</div> */}
             <input className='input' type="password" placeholder='Įveskite slaptažodį' ref={inp.pass1} />
-            {/* <div>Pakartokite slaptažodį:</div> */}
             <input className='input' type="password" placeholder='Pakartokite slaptažodį' ref={inp.pass2} />
             <button className='btn' onClick={registerUser}>Registruotis</button>
             {getError && <div className='d-flex justify-content-center'>{getError}</div>}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -7,14 +7,12 @@ import { IoMdLogOut } from 'react-icons/io'
 import { TiThMenu } from 'react-icons/ti'
 
 
-
 const Toolbar = () => {
     const { getUser, favoritesAmount } = useContext(UserContext)
     const [menuActive, setMenuActive] = useState(false)
     function handleMenu() {
         setMenuActive(!menuActive)
     }
-
 
     return (
         <div className='d-flex justify-content-evenly align-items-center sm-toolbar'>

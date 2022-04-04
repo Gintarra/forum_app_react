@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import http from '../plugins/http';
+import Loader from './Loader';
 import ModalTopic from './ModalTopic';
 import OneTopic from './OneTopic';
 
 const Forum = () => {
     const { getUser } = useContext(UserContext)
     const [getModal, setModal] = useState(false)
+    const [getLoader, setLoader] = useState(true)
     const [getTopics, setTopics] = useState([])
     useEffect(() => {
         http.get("allTopics").then(res => {
             if (res.success) {
                 setTopics(res.data)
+                setLoader(false)
             } else {
 
             }
@@ -29,7 +32,8 @@ const Forum = () => {
                     <div className='flex1'>Žinučių kiekis</div>
                     <div className='flex2'>Paskutinis postas</div>
                 </div>
-                {getTopics.length === 0 && <div>Temų dar nėra, sukurkite naują</div>}
+                {getLoader && <Loader/>}
+                {getTopics.length === 0 && !getLoader && <div>Temų dar nėra, sukurkite naują</div>}
                 {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
             </div>
         </div>
