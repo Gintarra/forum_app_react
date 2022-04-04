@@ -10,6 +10,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import ForumPage from './pages/ForumPage';
 import TopicPage from './pages/TopicPage';
 import Logout from './components/Logout';
+import io from 'socket.io-client'
 
 
 function App() {
