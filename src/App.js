@@ -11,6 +11,7 @@ import ForumPage from './pages/ForumPage';
 import TopicPage from './pages/TopicPage';
 import Logout from './components/Logout';
 import io from 'socket.io-client'
+import Footer from './components/Footer';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path='/atsijungti' element={<Logout />} />
 
           </Routes>
+          <Footer />
         </UserContext.Provider>
       </BrowserRouter>
     </div>

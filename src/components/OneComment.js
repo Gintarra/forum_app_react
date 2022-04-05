@@ -12,8 +12,16 @@ const OneComment = ({ x }) => {
         str.map(x => validImg.test(x) ? imgLink = x : null)
         let newText = text.replace(link, '').replace(imgLink, '')
         let url = link.replace("watch?v=", "embed/");
-        return <div className='md-flex md-column md-align-center'>{newText} <div>{imgLink !== '' && <img src={imgLink} alt='' />}</div> <div><a href={link}>{link}</a></div>  <div className='md-flex md-j-center md-align-center'> {url !== '' && <Video videoLink={url} />} </div> </div>
-
+        return <div className='md-flex md-column md-align-center'>
+            {newText}
+            <div>
+                {imgLink !== '' && <img src={imgLink} alt='' />}
+            </div>
+            <div><a href={link}>{link}</a></div>
+            <div className='md-flex md-j-center md-align-center'>
+                {url !== '' && <Video videoLink={url} />}
+            </div>
+        </div>
     }
     function displayDate(timestamp) {
         const date = new Date(timestamp);

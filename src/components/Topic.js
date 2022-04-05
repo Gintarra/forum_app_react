@@ -26,6 +26,7 @@ const Topic = () => {
     const [getLoader, setLoader] = useState(true)
 
 
+
     useEffect(() => {
         if (currentPage !== null) {
             http.get("topic/" + id + '/' + currentPage).then(res => {
@@ -35,6 +36,7 @@ const Topic = () => {
                     setUser(res.data3)
                     setTitle(res.data4)
                     setLoader(false)
+                    window.scrollTo({ top: 0 }); 
                 }
             })
         }
@@ -45,7 +47,7 @@ const Topic = () => {
             if (id === dataAll[2]) {
                 setTopicComments(dataAll[0])
                 setTotalCount(dataAll[1])
-             //   http.post('decrease', {id})
+                http.post({ id, location }, 'decrease')
             }
         })
     }, [])
@@ -82,7 +84,7 @@ const Topic = () => {
     }
 
     return (
-        <div className='p-3'>
+        <div className='p-3 forum-box'>
             <div className='d-flex my-2'>
                 <h5 onClick={() => nav('/')} className="link-topic d-flex align-items-end">Forumas <IoIosArrowForward /> </h5>
                 <h5>{getTitle}</h5>
@@ -96,11 +98,12 @@ const Topic = () => {
             {postsPerPage < getTotalCount &&
                 <UsePagination activePage={currentPage} handlePageChange={handlePageChange} totalCount={getTotalCount}
                 />}
-            {getUser && !getLoader && <div className='d-flex flex-column align-items-center'>
-                <textarea placeholder='Komentaro tekstas' ref={inputText} />
-                <div>{getError}</div>
-                <button className='btn' onClick={sendComment}>Komentuoti</button>
-            </div>}
+            {getUser && !getLoader &&
+                <div className='d-flex flex-column align-items-center'>
+                    <textarea placeholder='Komentaro tekstas' ref={inputText} />
+                    <div>{getError}</div>
+                    <button className='btn' onClick={sendComment}>Komentuoti</button>
+                </div>}
         </div>
     );
 };

@@ -36,7 +36,7 @@ const ModalChangeImage = ({ setModal, getUser, setUser }) => {
                     />
                     <div className="d-flex flex-column">
                         <input ref={newImage}
-                            placeholder="Nukopijuokite nuotraukos url."
+                            placeholder="Nukopijuokite nuotraukos url"
                         />
                         <div className="d-flex justify-content-center flex-column align-items-center">
                             <div>{getError}</div>

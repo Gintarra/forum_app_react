@@ -23,7 +23,7 @@ const Forum = () => {
     }, [getModal])
 
     return (
-        <div className='d-flex flex-column p-4 '>
+        <div className='d-flex flex-column p-4 forum-box '>
             {getModal && <ModalTopic setModal={setModal} />}
             {getUser && <button className='btn-modal align-self-end' onClick={() => setModal(true)}>Sukurti naują temą</button>}
             <div className='d-flex align-items-center flex-column'>

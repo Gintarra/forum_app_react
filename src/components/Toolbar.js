@@ -20,16 +20,22 @@ const Toolbar = () => {
             <div className={menuActive ? 'sm-flex sm-column sm-toolbar-box' : 'toolbar dis-flex sm-none justify-content-evenly align-items-center'}>
                 {!getUser && <Link className='link' to="/registruotis" onClick={() => setMenuActive(false)} >Registruotis</Link>}
                 {!getUser && <Link className='link' to="/prisijungti" onClick={() => setMenuActive(false)} >Prisijungti </Link>}
-                {getUser && <Link className='link' to="/profilis" onClick={() => setMenuActive(false)} >
-                    Profilis
-                    <span className={getUser.notification.length > 0 ? 'badge' : ''}>{getUser.notification.length > 0 && getUser.notification.length}</span>
-                </Link>}
+                {getUser &&
+                    <Link className='link' to="/profilis" onClick={() => setMenuActive(false)} >
+                        Profilis
+                        <span className={getUser.notification.length > 0 ? 'badge' : ''}>
+                            {getUser.notification.length > 0 && getUser.notification.length}
+                        </span>
+                    </Link>}
                 <Link className='link' to="/" onClick={() => setMenuActive(false)} >Forumas</Link>
                 <Link className='link' to="/megstamiausi" onClick={() => setMenuActive(false)} >
                     Mėgstamiausi
                     <span className={favoritesAmount > 0 ? 'badge' : ''}>{favoritesAmount > 0 && favoritesAmount}</span>
                 </Link>
-                {getUser && <Link className='link' to='/atsijungti' onClick={() => setMenuActive(false)} >Atsijungti<IoMdLogOut className='mx-2' style={{ fontSize: '20px' }} /></Link>}
+                {getUser &&
+                    <Link className='link' to='/atsijungti' onClick={() => setMenuActive(false)} >
+                        Atsijungti<IoMdLogOut className='mx-2' style={{ fontSize: '20px' }} />
+                    </Link>}
             </div>
 
         </div>

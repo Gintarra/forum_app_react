@@ -1,7 +1,9 @@
+/* Register, login */
 .reg-log-container {
   width: 280px;
   padding: 25px 15px;
   margin-top: 30px;
+  min-height: calc(100vh - 141px);
 }
 .btn {
   margin: 10px;
@@ -11,6 +13,7 @@
   font-weight: bold;
   color: rgb(255, 255, 255);
   background-color: #ed7966;
+  border-radius: 0;
 }
 .btn:hover {
   transform: scale(1.05);
@@ -23,6 +26,7 @@
   padding: 3px;
   margin: 7px;
 }
+/* toolbar */
 .toolbar {
   background-color: #ed7966;
   padding: 15px;
@@ -59,6 +63,7 @@
   background: rgb(131, 131, 131);
   color: white;
 }
+/* user profile */
 .user-container {
   width: 100%;
   background-color: #e0d8d7;
@@ -73,12 +78,6 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (max-width: 480px) {
-  .sm-column {
-    flex-direction: column;
-  }
-}
-
 .user-image:hover::after {
   content: "Pakeisti nuotrauką";
   width: 140px;
@@ -131,7 +130,6 @@
   color: rgb(255, 255, 255);
 }
 /* One topic element */
-
 .flex1 {
   flex: 1;
 }
@@ -140,6 +138,15 @@
 }
 .flex4 {
   flex: 4;
+}
+.forum-box {
+  min-height: calc(100vh - 111px);
+}
+.fav-box {
+  min-height: calc(100vh - 111px);
+}
+.height-container {
+  min-height: calc(100vh - 111px);
 }
 /* pagination */
 .pagination {
@@ -155,7 +162,7 @@ ul {
 ul.pagination li {
   display: inline-block;
   width: 30px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid #aaaaaa;
   display: flex;
   justify-content: center;
   font-size: 25px;
@@ -200,11 +207,7 @@ ul.pagination li.active {
 .topic-onclick:hover {
   cursor: pointer;
 }
-@media screen and (max-width: 480px) {
-  .sm-column {
-    flex-direction: column;
-  }
-}
+
 /* comment */
 .comment-container {
   margin: 0 60px;
@@ -289,6 +292,9 @@ textarea {
   font-weight: bold;
 }
 @media screen and (max-width: 480px) {
+  .sm-column {
+    flex-direction: column;
+  }
   .sm-flex {
     display: flex;
   }
@@ -330,18 +336,30 @@ textarea {
 }
 /* Loader */
 .loader {
-    border: 5px solid #ddd9d9; /* Light grey */
-    border-top: 5px solid rgb(131, 131, 131); 
-    border-right: 5px solid rgb(131, 131, 131);
-    border-bottom: 5px solid rgb(131, 131, 131);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin: 20px;
-    animation: spin 1s linear infinite;
+  border: 5px solid #ddd9d9; /* Light grey */
+  border-top: 5px solid rgb(131, 131, 131);
+  border-right: 5px solid rgb(131, 131, 131);
+  border-bottom: 5px solid rgb(131, 131, 131);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
   }
+}
+/* footer  */
+.footer-container {
+  background-color: #ed7966;
+  padding: 15px;
+  color: white;
+  position: sticky;
+  bottom: 0;
+}
