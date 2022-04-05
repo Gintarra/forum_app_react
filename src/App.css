@@ -31,8 +31,6 @@
   background-color: #ed7966;
   padding: 15px;
   width: 100%;
-  position: sticky;
-  top: 0;
 }
 .link {
   text-decoration: none;
@@ -210,7 +208,7 @@ ul.pagination li.active {
 
 /* comment */
 .comment-container {
-  margin: 0 60px;
+  margin: 12px 60px;
   border: 1px solid black;
 }
 
@@ -271,14 +269,17 @@ textarea {
     border-radius: 50%;
   }
   .comment-container {
-    margin: 0 20px;
+    margin: 10px 20px;
   }
   textarea {
     margin: 20px 20px 0 20px;
     width: 90%;
   }
   .link {
-    font-size: 15px;
+    font-size: 12px;
+  }
+  .toolbar {
+    height: 57px;
   }
 }
 .dis-flex {
@@ -301,7 +302,7 @@ textarea {
   .sm-toolbar {
     background-color: #ed7966;
     position: relative;
-    height: 40px;
+    height: 57px;
     color: white;
   }
   .menu-icon {
@@ -360,6 +361,9 @@ textarea {
   background-color: #ed7966;
   padding: 15px;
   color: white;
-  position: sticky;
-  bottom: 0;
+}
+/* Rules */
+.rules-container {
+  min-height: calc(100vh - 191px);
+  margin: 40px 60px;
 }

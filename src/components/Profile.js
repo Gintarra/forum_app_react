@@ -54,18 +54,20 @@ const Profile = () => {
                 {getModal && <ModalChangeImage setModal={setModal} getUser={getUser} setUser={setUser} />}
                 <div className='p-3 d-flex flex-column align-items-center'>
                     <h6>Mano sukurtos temos:</h6>
-                    {getTopics.length === 0 && !getLoader && 
-                    <div className='d-flex flex-column align-items-center mt-2'><FaThList style={{ fontSize: '60px' }} />
-                        <div>Temų neturite</div></div>}
-                        {getLoader && <Loader/>}
+                    {getTopics.length === 0 && !getLoader &&
+                        <div className='d-flex flex-column align-items-center mt-2'><FaThList style={{ fontSize: '60px' }} />
+                            <div>Temų neturite</div>
+                        </div>}
+                    {getLoader && <Loader />}
                     {getTopics.length > 0 && getTopics.map((x, i) => <OneTopic key={i} topic={x} />)}
                 </div>
                 <div className='p-3 d-flex flex-column align-items-center'>
                     <h6>Mano komentarai:</h6>
-                    {getComments.length === 0 && !getLoader && 
-                    <div className='d-flex flex-column align-items-center mt-2'><FaCommentSlash style={{ fontSize: '60px' }} />
-                        <div>Komentarų neturite</div></div>}
-                        {getLoader && <Loader/>}
+                    {getComments.length === 0 && !getLoader &&
+                        <div className='d-flex flex-column align-items-center mt-2'><FaCommentSlash style={{ fontSize: '60px' }} />
+                            <div>Komentarų neturite</div>
+                        </div>}
+                    {getLoader && <Loader />}
                     {getComments.length > 0 && getComments.map((x, i) => <OneCommentUser key={i} x={x} topics={getAllTopics} />)}
                 </div>
             </div>}

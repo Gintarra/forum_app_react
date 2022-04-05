@@ -12,6 +12,7 @@ import TopicPage from './pages/TopicPage';
 import Logout from './components/Logout';
 import io from 'socket.io-client'
 import Footer from './components/Footer';
+import RulesPage from './pages/RulesPage';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify([]));
   }
   return (
-    <div >
+    <div>
       <BrowserRouter>
         <UserContext.Provider value={{ getUser, setUser, allFavorites, setAllFavorites, favoritesAmount, setFavoritesAmount }}>
           <Toolbar />
@@ -35,6 +36,7 @@ function App() {
             <Route path='/megstamiausi' element={<FavoritesPage />} />
             <Route path='/tema/:id' element={<TopicPage />} />
             <Route path='/atsijungti' element={<Logout />} />
+            <Route path='/taisykles' element={<RulesPage/>} />
 
           </Routes>
           <Footer />

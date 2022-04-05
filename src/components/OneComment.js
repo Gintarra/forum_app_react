@@ -12,7 +12,7 @@ const OneComment = ({ x }) => {
         str.map(x => validImg.test(x) ? imgLink = x : null)
         let newText = text.replace(link, '').replace(imgLink, '')
         let url = link.replace("watch?v=", "embed/");
-        return <div className='md-flex md-column md-align-center'>
+        return <div className='md-flex md-column '>
             {newText}
             <div>
                 {imgLink !== '' && <img src={imgLink} alt='' />}

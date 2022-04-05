@@ -17,7 +17,7 @@ const OneCommentUser = ({ x, topics }) => {
         nav('/tema/' + x.topicID)
     }
     return (
-        <div className='user-comment-container d-flex'>
+        <div className='user-comment-container d-flex my-1'>
             <div className='comment-box text-break'>
                 <div className='link-topic' onClick={goToSinglePage}><b>Tema:{getTopic()}</b> </div>
                 {displayDate(x.createdTimestamp)}
