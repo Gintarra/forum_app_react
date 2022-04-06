@@ -209,7 +209,8 @@ ul.pagination li.active {
 /* comment */
 .comment-container {
   margin: 12px 60px;
-  border: 1px solid black;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.4);
+  padding: 15px 0;
 }
 
 .comment-container img {
@@ -220,7 +221,7 @@ ul.pagination li.active {
   font-size: 16px;
 }
 .user-box {
-  border-right: solid 1px black;
+  border-right: solid 1px rgba(0, 0, 0, 0.4);
   padding: 15px;
 }
 .user-box img {
@@ -238,7 +239,7 @@ textarea {
 }
 .user-comment-container {
   margin: 0 60px;
-  border: 1px solid black;
+   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.4);
   width: 80%;
 }
 .link-topic:hover {
